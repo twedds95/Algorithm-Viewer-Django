@@ -1,0 +1,26 @@
+{% extends "AlgorithmViewer/base.html"%}
+{% load static %}
+{% block content %}
+    <h1> Visualize Sorting Algorithms at Work</h1>
+            <div class="container">
+                <label for="algorithm">Select Sorting Algorithm:</label>
+                <select class="m-2" id = "algorithm" name="algorithmList" onchange="">
+                    <option value="bubble">Bubble Sort</option>
+                    <option value="insertion">Insertion Sort</option>
+                    <option value="selection">Selection Sort</option>
+                    <option value="merge">Merge Sort</option>
+                    <option value="quick_low">Quick Sort (Low Pivot)</option>
+                    <option value="quick_med">Quick Sort (Median Pivot)</option>
+                    <option value="quick_high">Quick Sort (High Pivot)</option>
+                    <option value="quick_random">Quick Sort (Random Pivot)</option>
+                </select>
+                <button class="button"id="startButton" type="submit">Start</button>
+            </div>
+            <div class="container-fluid" style="margin-top: 20px">
+                    <svg class="sorting-block">
+                        {% for num in numbers %}
+                            <rect x='{{ num.index }}' width="2", height="{{ num.numbers }}" style="fill: #428bca"></rect>
+                        {% endfor %}
+                    </svg>
+            </div>
+{% endblock content %}

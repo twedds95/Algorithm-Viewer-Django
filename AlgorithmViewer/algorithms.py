@@ -141,14 +141,21 @@ def split_for_merge(number_list, left, right):
         merge(number_list, left, right, middle)
 
 
-# Tester code for Algorithms
-arr = [12, 1, 3, 5, 6, 7, 29, 0, 2, 2, 44, 27, 2, 5]
-m = len(arr)
-print ("Given array is")
-for ij in range(m):
-    print ("%d" % arr[ij]),
+def generate_random_array(size, max):
+    number_list = []
+    for i in range(0, size):
+        number_list.append(random.randint(0, max))
+    return number_list
 
-quick_sort_med(arr)
-print ("\n\nSorted array is")
-for ij in range(m):
-    print ("%d" % arr[ij]),
+
+# Tester code for Algorithms
+# arr = generate_random_array(100, 30)
+# m = len(arr)
+# print ("Given array is")
+# for ij in range(m):
+#     print ("%d" % arr[ij]),
+#
+# quick_sort_med(arr)
+# print ("\n\nSorted array is")
+# for ij in range(m):
+#     print ("%d" % arr[ij]),

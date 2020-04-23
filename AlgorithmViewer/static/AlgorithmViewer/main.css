@@ -1,0 +1,50 @@
+body {
+  background: #fafafa;
+  color: #333333;
+  margin-top: 5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #444444;
+}
+
+ul {
+  margin: 0;
+}
+
+.bg-steel {
+  background-color: #5f788a;
+}
+
+.site-header .navbar-nav .nav-link {
+  color: #cbd5db;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+
+.button {
+    transition-duration: 0.4s;
+    background-color: #428bca;
+    color: white;
+    padding: 1px 24px;
+    border-radius: 8px;
+}
+
+.button:hover {
+    color: black;
+    background-color: white;
+    border-color: #428bca;
+}
+
+.sorting-block {
+    text-align: center;
+    width: 70%;
+    height: 500px;
+    border-color: black;
+}
