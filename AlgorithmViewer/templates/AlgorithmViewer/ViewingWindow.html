@@ -2,24 +2,22 @@
 {% load static %}
 {% block content %}
     <h1> Visualize Sorting Algorithms at Work</h1>
-            <div class="container">
-                <label for="algorithm">Select Sorting Algorithm:</label>
-                <select class="m-2" id = "algorithm" name="algorithmList" onchange="">
-                    <option value="bubble">Bubble Sort</option>
-                    <option value="insertion">Insertion Sort</option>
-                    <option value="selection">Selection Sort</option>
-                    <option value="merge">Merge Sort</option>
-                    <option value="quick_low">Quick Sort (Low Pivot)</option>
-                    <option value="quick_med">Quick Sort (Median Pivot)</option>
-                    <option value="quick_high">Quick Sort (High Pivot)</option>
-                    <option value="quick_random">Quick Sort (Random Pivot)</option>
-                </select>
+        <div class="container">
+            <form action={% url 'sorting' %} method="post">
+                    {% csrf_token %}
+                    {{ form.algorithm.label }}
+                        <select class="m-2" id = "algorithm" name="algorithm_list">
+                            {% for alg in form.algorithm %}
+                                <option value={{ alg }}>Option</option>
+                            {% endfor %}
+                         </select>
                 <button class="button"id="startButton" type="submit">Start</button>
-            </div>
+            </form>
+        </div>
             <div class="container-fluid" style="margin-top: 20px">
                     <svg class="sorting-block">
-                        {% for num in numbers %}
-                            <rect x='{{ num.index }}' width="1", height="{{ num.numbers }}" style="fill: #428bca"></rect>
+                        {% for num in context.numbers %}
+                            <rect x='{{ num.index }}' width="1", height="{{ num.number }}" style="fill: #428bca"></rect>
                         {% endfor %}
                     </svg>
             </div>

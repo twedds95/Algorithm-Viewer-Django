@@ -62,12 +62,12 @@ def split_for_quick(number_list, low, high, p):
     number_list[piv], number_list[low] = number_list[low], number_list[piv]
 
     i = low + 1
-    for j in range(low+1, high+1):
+    for j in range(low + 1, high + 1):
         if number_list[j] < pivot:
             number_list[i], number_list[j] = number_list[j], number_list[i]
             i = i + 1
-    number_list[i-1], number_list[low] = number_list[low], number_list[i-1]
-    return i-1
+    number_list[i - 1], number_list[low] = number_list[low], number_list[i - 1]
+    return i - 1
 
 
 def insertion_sort(number_list):
@@ -147,6 +147,18 @@ def generate_random_array(size, max):
         number_list.append(random.randint(0, max))
     return number_list
 
+
+def get_sorting_alg(name, num_list):
+    # 'bubble', 'insertion', 'selection', 'merge', 'quick_low', 'quick_random'
+    switcher = {
+        "selection": selection_sort(num_list),
+        "merge": merge_sort(num_list),
+        "quick_low": quick_sort_low(num_list),
+        "quick_random": quick_sort_random(num_list),
+        "insertion": insertion_sort(num_list),
+        "bubble": bubble_sort(num_list),
+    }
+    return switcher.get(name, "errorPlacing")
 
 # Tester code for Algorithms
 # arr = generate_random_array(100, 30)
