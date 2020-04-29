@@ -4,7 +4,6 @@ from django.db import models
 
 
 class NumberList(models.Model):
-    list_id = models.IntegerField()
     list_size = models.IntegerField()
     list_max_value = models.IntegerField()
 
