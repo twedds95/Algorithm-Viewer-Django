@@ -40,6 +40,7 @@ ul {
     color: black;
     background-color: white;
     border-color: #428bca;
+    border-radius: 8px;
 }
 
 .sorting-block {

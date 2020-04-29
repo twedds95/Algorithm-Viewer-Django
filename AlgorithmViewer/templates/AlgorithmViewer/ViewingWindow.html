@@ -3,20 +3,21 @@
 {% block content %}
     <h1> Visualize Sorting Algorithms at Work</h1>
         <div class="container">
-            <form action={% url 'sorting' %} method="post">
-                    {% csrf_token %}
-                    {{ form.algorithm.label }}
-                        <select class="m-2" id = "algorithm" name="algorithm_list">
-                            {% for alg in form.algorithm %}
-                                <option value={{ alg }}>Option</option>
-                            {% endfor %}
-                         </select>
-                <button class="button"id="startButton" type="submit">Start</button>
-            </form>
+        <form action="{% url 'sorting' numberList %}">
+       {% csrf_token %}
+        <a class="button"id="resetButton" href="{% url 'algorithm-viewer' %}" type="submit">Reset</a>
+            <label>Select Sorting Algorithm: </label>
+                <select class="m-2" id = "algorithm" name="algorithm_list">
+                    {% for alg in algorithms %}
+                        <option value={{ alg.code }}>{{ alg.algo }}</option>
+                    {% endfor %}
+                 </select>
+            <input class="button"id="startButton" type="submit" value="Start"></input>
+        </form>
         </div>
             <div class="container-fluid" style="margin-top: 20px">
                     <svg class="sorting-block">
-                        {% for num in context.numbers %}
+                        {% for num in numbers %}
                             <rect x='{{ num.index }}' width="1", height="{{ num.number }}" style="fill: #428bca"></rect>
                         {% endfor %}
                     </svg>
