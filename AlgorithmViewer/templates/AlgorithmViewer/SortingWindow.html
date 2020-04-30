@@ -1,0 +1,18 @@
+{% extends "AlgorithmViewer/base.html"%}
+{% load static %}
+{% block content %}
+    <h1> Visualize Sorting Algorithms at Work</h1>
+        <div class="container">
+       {% csrf_token %}
+        <a class="button"id="resetButton" href="{% url 'algorithm-viewer' %}" type="submit">Reset</a>
+            <label>Sorting with Algorithm: {{ algorithm }}</label>
+        </div>
+            <div class="container-fluid" onload="animateSorting({{ numbers }})" style="margin-top: 20px">
+                    <svg class="sorting-block">
+                        {% for num in numbers %}
+                            <rect class="rect-bar" x='{{ num.index }}' width="1", height="{{ num.number }}" style="fill: #428bca"></rect>
+                        {% endfor %}
+                    </svg>
+            </div>
+   <script type="module" src="{% static 'AlgorithmViewer/js/animations.js'%}"></script>
+{% endblock content %}

@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-import random
 from django.shortcuts import render
 from .algorithms import generate_random_array, get_sorting_alg
 from .models import NumberList, NumberForList
@@ -47,13 +46,15 @@ def sort_given_array(algorithm, num_list):
         if num.index == index:
             nums.append(num.number)
             index += 1
-    n_list = get_sorting_alg(algorithm, nums)
+    # n_list = get_sorting_alg(algorithm, nums)
+    n_list = nums
     size = len(n_list)
     numbers = []
     for i in range(size):
         numbers.append({'index': float(i * 900 / size),
                         'number': n_list[i]})
-    context = {'numbers': numbers, 'numberList': num_list.id, 'algorithms': algorithm_list}
+    context = {'numbers': numbers, 'numberList': num_list.id,
+               'algorithm': [a['algo'] for a in algorithm_list if a.get('code') == algorithm][0]}
     return context
 
 
@@ -66,4 +67,4 @@ def sorting_viewer(request, numberlist):
     num_list = NumberList.objects.get(id=numberlist)
     algorithm = request.GET['algorithm_list']
     context = sort_given_array(algorithm, num_list)
-    return render(request, 'AlgorithmViewer/ViewingWindow.html', context)
+    return render(request, 'AlgorithmViewer/SortingWindow.html', context)
