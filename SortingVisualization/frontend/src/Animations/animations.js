@@ -1,4 +1,4 @@
-import {getMergeSortAnimations} from './sortingVisualizations/mergeSort.js';
+import {getMergeSortAnimations} from '../SortingAlgorithms/mergeSort.js';
 
 const PRIMARY_COLOR = '#428bca';
 const SECONDARY_COLOR = '#150855';
@@ -8,6 +8,17 @@ const SPEED = 1;
 // and github source code:
 // https://github.com/clementmihailescu/Sorting-Visualizer-Tutorial/blob/master/src/SortingVisualizer/SortingVisualizer.jsx
 
+export function changeColor() {
+    const arrayBars = document.getElementsByClassName('rect-bar');
+    for (const bar in arrayBars) {
+        if (bar.style.fill === PRIMARY_COLOR){
+            bar.style.fill = SECONDARY_COLOR
+        }
+        else {
+            bar.style.fill = PRIMARY_COLOR
+        }
+    }
+}
 
       export function animateSorting(numLib) {
             console.log(numLib)
