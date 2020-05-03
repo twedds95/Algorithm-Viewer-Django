@@ -1,4 +1,5 @@
 import {getMergeSortAnimations} from '../SortingAlgorithms/mergeSort.js';
+import {getQuickSortAnimations} from "../SortingAlgorithms/quickSort";
 import React from "react";
 import './animations.css';
 
@@ -42,10 +43,13 @@ export default class SortingVisualizer extends React.Component {
                 animations = getMergeSortAnimations(this.state.array);
                 break;
             case "Quick Sort":
+                animations = getQuickSortAnimations(this.state.array);
                 break;
             case "Selection Sort":
                 break;
             case "Insertion Sort":
+                break;
+            default:
                 break;
 
         }
@@ -74,8 +78,6 @@ export default class SortingVisualizer extends React.Component {
 
     createSelection() {
         let select = []
-
-        // Outer loop to create parent
         for (let i = 0; i < SORTING_ALGORITHMS.length; i++) {
             select.push(<option value={SORTING_ALGORITHMS[i]}>{SORTING_ALGORITHMS[i]}</option>)
         }
