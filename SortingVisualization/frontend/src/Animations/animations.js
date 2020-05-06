@@ -1,15 +1,16 @@
 import {getMergeSortAnimations} from '../SortingAlgorithms/mergeSort.js';
 import {getQuickSortAnimations} from "../SortingAlgorithms/quickSort";
+import {getBeadSortAnimations} from "../SortingAlgorithms/beadSort";
 import React from "react";
 import './animations.css';
 
 const PRIMARY_COLOR = '#428bca';
 const SECONDARY_COLOR = '#150855';
-const SPEED = 1;
+let SPEED = 1;
 const NUMBER_OF_ARRAY_BARS = 350;
 const MAX_HEIGHT = 500;
 
-const SORTING_ALGORITHMS = ["Merge Sort", "Quick Sort", "Selection Sort", "Insertion Sort"];
+const SORTING_ALGORITHMS = ["Merge Sort", "Quick Sort", "Selection Sort", "Insertion Sort", "Bead (Gravity) Sort"];
 
 // Referenced and modified from Youtube video https://www.youtube.com/watch?v=pFXYym4Wbkc
 // and github source code:
@@ -48,6 +49,10 @@ export default class SortingVisualizer extends React.Component {
             case "Selection Sort":
                 break;
             case "Insertion Sort":
+                break;
+            case "Bead (Gravity) Sort":
+                animations = getBeadSortAnimations(this.state.array);
+                // SPEED /= 10;
                 break;
             default:
                 break;
