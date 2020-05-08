@@ -1,13 +1,14 @@
 import {getMergeSortAnimations} from '../SortingAlgorithms/mergeSort.js';
 import {getQuickSortAnimations} from "../SortingAlgorithms/quickSort";
 import {getBeadSortAnimations} from "../SortingAlgorithms/beadSort";
+import {getInsertionSortAnimations} from "../SortingAlgorithms/insertionSort";
 import React from "react";
 import './animations.css';
 import {getselectionSortAnimations} from "../SortingAlgorithms/selectionSort";
 
 const PRIMARY_COLOR = '#428bca';
 const SECONDARY_COLOR = '#150855';
-let SPEED = 1;
+let SPEED = 0.7;
 const NUMBER_OF_ARRAY_BARS = 350;
 const MAX_HEIGHT = 500;
 
@@ -55,6 +56,7 @@ export default class SortingVisualizer extends React.Component {
                 break;
             case "Insertion Sort":
                 // One by one, find where each number goes and place it there
+                animations = getInsertionSortAnimations(this.state.array);
                 break;
             case "Bead (Gravity) Sort":
                 // Abacus algorithm, push everything to the right
