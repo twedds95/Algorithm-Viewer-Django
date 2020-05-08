@@ -43,16 +43,21 @@ function beadSortHelper(
                     BEAD[x][k] = 0;
                 }
                 animateBeads.push({ind: i, h: y});
+                let isLowest = true;
                 if (x > 0 && BEAD[x - 1][j] === 0) {
-                    animateBeads.push({ind: x, h: j});
+                    for (let k = mainArray.length - 1; k > 0; k--) {
+                        if (BEAD[k][j] === 1)
+                            isLowest = false;
+                    }
+                    if (isLowest)
+                        animateBeads.push({ind: x, h: j});
                 }
             }
         }
     }
 
     animateBeads.forEach(function (m) {
-        animations.push([m.ind, m.ind]);
-        animations.push([m.ind, m.ind]);
+        animations.push({action: 'newHeight', indOne: m.ind, heightOne: m.h});
         animations.push([m.ind, m.h]);
     });
 }

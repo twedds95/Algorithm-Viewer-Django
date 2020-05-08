@@ -32,26 +32,23 @@ function splitForQuick(
     let k = mainArray[startIdx];
     let j = startIdx + 1;
     for (let i = startIdx + 1; i <= endIdx; i++) {
-        animations.push([i, j]);
-        animations.push([i, j]);
+        animations.push({action: 'compare', indOne: i, indTwo: j});
+        animations.push({action: 'normal', indOne: i, indTwo: j});
         if (mainArray[i] < k) {
-            animations.push([j, mainArray[i]]);
-            animations.push([i, j]);
-            animations.push([i, j]);
-            animations.push([i, mainArray[j]]);
+            animations.push({action: 'swap', indOne: i, indTwo: j, heightOne: mainArray[j], heightTwo: mainArray[i]});
             swap(mainArray, i, j);
             j++;
         }
-        else {
-            animations.push([i, mainArray[i]]);
-        }
     }
-    animations.push([j-1, startIdx]);
-    animations.push([j-1, startIdx]);
-    animations.push([j-1, mainArray[startIdx]]);
-    animations.push([j-1, startIdx]);
-    animations.push([j-1, startIdx]);
-    animations.push([startIdx, mainArray[j-1]]);
+    animations.push({action: 'compare', indOne: j - 1, indTwo: startIdx});
+    animations.push({action: 'normal', indOne: j - 1, indTwo: startIdx});
+    animations.push({
+        action: 'swap',
+        indOne: j - 1,
+        indTwo: startIdx,
+        heightOne: mainArray[startIdx],
+        heightTwo: mainArray[j - 1]
+    })
     swap(mainArray, j - 1, startIdx);
     return j - 1;
 }

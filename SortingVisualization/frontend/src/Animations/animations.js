@@ -3,6 +3,7 @@ import {getQuickSortAnimations} from "../SortingAlgorithms/quickSort";
 import {getBeadSortAnimations} from "../SortingAlgorithms/beadSort";
 import React from "react";
 import './animations.css';
+import {getselectionSortAnimations} from "../SortingAlgorithms/selectionSort";
 
 const PRIMARY_COLOR = '#428bca';
 const SECONDARY_COLOR = '#150855';
@@ -38,21 +39,26 @@ export default class SortingVisualizer extends React.Component {
     }
 
     animateSorting() {
-        let animations = [];
+        var animations = [];
         switch (document.getElementById('algorithm').value) {
             case "Merge Sort":
+                // Divide & Conquer by splitting in half always
                 animations = getMergeSortAnimations(this.state.array);
                 break;
             case "Quick Sort":
+                // Divide & Conquer by splitting both sides of a pivot that is now at the right position
                 animations = getQuickSortAnimations(this.state.array);
                 break;
             case "Selection Sort":
+                // Find the smallest/largest number and through it to the front/back
+                animations = getselectionSortAnimations(this.state.array);
                 break;
             case "Insertion Sort":
+                // One by one, find where each number goes and place it there
                 break;
             case "Bead (Gravity) Sort":
+                // Abacus algorithm, push everything to the right
                 animations = getBeadSortAnimations(this.state.array);
-                // SPEED /= 10;
                 break;
             default:
                 break;
@@ -61,21 +67,42 @@ export default class SortingVisualizer extends React.Component {
 
         for (let i = 0; i < animations.length; i++) {
             const arrayBars = document.getElementsByClassName('array-bar');
-            const isColorChange = i % 3 !== 2;
-            if (isColorChange) {
-                const [barOneIdx, barTwoIdx] = animations[i];
+            let action = animations[i].action;
+
+            if (action === 'compare') {
+                const barOneIdx = animations[i].indOne;
+                const barTwoIdx = animations[i].indTwo;
                 const barOneStyle = arrayBars[barOneIdx].style;
                 const barTwoStyle = arrayBars[barTwoIdx].style;
-                const color = i % 3 === 0 ? SECONDARY_COLOR : PRIMARY_COLOR;
+                const color = SECONDARY_COLOR;
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
                 }, i * SPEED);
-            } else {
+            } else if (action === 'normal') {
+                const barOneIdx = animations[i].indOne;
+                const barTwoIdx = animations[i].indTwo;
+                const barOneStyle = arrayBars[barOneIdx].style;
+                const barTwoStyle = arrayBars[barTwoIdx].style;
+                const color = PRIMARY_COLOR;
                 setTimeout(() => {
-                    const [barOneIdx, newHeight] = animations[i];
+                    barOneStyle.backgroundColor = color;
+                    barTwoStyle.backgroundColor = color;
+                }, i * SPEED);
+            } else if (action === 'newHeight') {
+                setTimeout(() => {
+                    const barOneIdx = animations[i].indOne;
                     const barOneStyle = arrayBars[barOneIdx].style;
-                    barOneStyle.height = `${newHeight}px`;
+                    barOneStyle.height = `${animations[i].heightOne}px`;
+                }, i * SPEED);
+            } else if (action === 'swap') {
+                setTimeout(() => {
+                    const barOneIdx = animations[i].indOne;
+                    const barTwoIdx = animations[i].indTwo;
+                    const barOneStyle = arrayBars[barOneIdx].style;
+                    const barTwoStyle = arrayBars[barTwoIdx].style;
+                    barOneStyle.height = `${animations[i].heightOne}px`;
+                    barTwoStyle.height = `${animations[i].heightTwo}px`;
                 }, i * SPEED);
             }
         }
