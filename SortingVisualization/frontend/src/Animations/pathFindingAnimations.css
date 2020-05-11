@@ -1,0 +1,55 @@
+
+.array-container {
+    left: 200px;
+    margin: 10px 10px;
+    width: 80%;
+    display: block;
+    height: 510px;
+    position: fixed;
+}
+
+.grid-square {
+    position: absolute;
+}
+
+button {
+    transition-duration: 0.4s;
+    background-color: #428bca;
+    color: white;
+    padding: 6px 24px;
+    border-radius: 8px;
+    margin: 5px;
+}
+
+select {
+    background-color: white;
+    color: #428bca;
+    padding: 4px 20px;
+    border-radius: 8px;
+    margin: 5px;
+}
+
+option, label {
+    background-color: white;
+    color: #428bca;
+    margin-left: 10px;
+}
+
+button:hover {
+    color: #428bca;
+    background-color: white;
+    border-color: #428bca;
+    border-radius: 8px;
+}
+
+body {
+    background: #fafafa;
+    color: #333333;
+    margin-top: 10px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #444444;
+    margin-bottom: 7px;
+    margin-top: 7px;
+}

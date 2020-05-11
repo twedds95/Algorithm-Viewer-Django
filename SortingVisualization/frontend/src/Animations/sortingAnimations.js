@@ -3,12 +3,12 @@ import {getQuickSortAnimations} from "../SortingAlgorithms/quickSort";
 import {getBeadSortAnimations} from "../SortingAlgorithms/beadSort";
 import {getInsertionSortAnimations} from "../SortingAlgorithms/insertionSort";
 import React from "react";
-import './animations.css';
+import './sortingAnimations.css';
 import {getselectionSortAnimations} from "../SortingAlgorithms/selectionSort";
 
 const PRIMARY_COLOR = '#428bca';
 const SECONDARY_COLOR = '#150855';
-let SPEED = 0.7;
+const SPEED = 0.7;
 const NUMBER_OF_ARRAY_BARS = 350;
 const MAX_HEIGHT = 500;
 
@@ -40,7 +40,7 @@ export default class SortingVisualizer extends React.Component {
     }
 
     animateSorting() {
-        var animations = [];
+        let animations = [];
         switch (document.getElementById('algorithm').value) {
             case "Merge Sort":
                 // Divide & Conquer by splitting in half always
@@ -123,6 +123,7 @@ export default class SortingVisualizer extends React.Component {
 
         return (
             <div>
+                <h1> Visualize Sorting Algorithms at Work</h1>
                 <button onClick={() => this.resetArray()}>Generate New Array</button>
                 <label>Select Sorting Algorithm: </label>
                 <select className="m-2" id="algorithm">
