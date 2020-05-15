@@ -90,9 +90,6 @@ function pathHelper(squares, animations) {
                 neighbour.fScore = tempScore + heuristic(neighbour, end);
                 neighbour.previous = current;
                 if (!openSet.includes(neighbour)) {
-                    // if (neighbour !== start && neighbour !== end) {
-                    //     animations.push({action: 'visit', square: neighbour});
-                    // }
                     openSet.push(neighbour);
                 }
             }
@@ -132,7 +129,7 @@ function weight(current, neighbour, end) {
     } else if (current.x === neighbour.x || current.y === neighbour.y) {
         w = 1;
     } else {
-        w = 0.9;
+        w = 1;
     }
     return w;
 }

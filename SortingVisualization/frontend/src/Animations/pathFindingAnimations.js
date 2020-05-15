@@ -10,7 +10,7 @@ const PATH_COLOR = '#428bca';
 const VISITED_COLOR = 'rgba(213,48,48,0.47)';
 const FAILURE_COLOR = 'rgb(255,0,0)';
 
-const SPEED = 50;
+const SPEED = 5;
 const PROB_OF_WALL = 0.25;
 const NUMBER_OF_BOXES_WIDTH = 120;
 const NUMBER_OF_BOXES_HEIGHT = 60;
@@ -55,8 +55,7 @@ export default class PathFindingVisualizer extends React.Component {
         }
         grid.push(start);
         grid.push(end);
-
-        this.setState({grid});
+        this.setState({grid: grid});
     }
 
     animatePath() {
@@ -104,90 +103,55 @@ export default class PathFindingVisualizer extends React.Component {
         return select
     }
 
-    renderTheGrid() {
-        const {grid} = this.state;
-        let squares = [];
-        for (let i = 0; i < grid.length; i++) {
-            let y = grid[i].y * (BOX_DIM + MARGIN)
-            let x = grid[i].x * (BOX_DIM + MARGIN)
-            let key = (grid[i].y * NUMBER_OF_BOXES_WIDTH) + grid[i].x + 1;
-            switch (grid[i].isA) {
-                case 'free':
-                    squares.push(<div
-                        className="grid-square"
-                        id={key}
-                        style={{
-                            backgroundColor: PRIMARY_COLOR,
-                            top: `${y}px`,
-                            left: `${x}px`,
-                            width: `${BOX_DIM}px`,
-                            height: `${BOX_DIM}px`,
-                            margin: `${MARGIN}px`,
-                        }}>
-                    </div>)
-                    break;
-                case 'wall':
-                    squares.push(<div
-                        className="grid-square"
-                        id={key}
-                        style={{
-                            backgroundColor: WALL_COLOR,
-                            top: `${y}px`,
-                            left: `${x}px`,
-                            width: `${BOX_DIM}px`,
-                            height: `${BOX_DIM}px`,
-                            margin: `${MARGIN}px`,
-                        }}>
-                    </div>)
-                    break;
-                case 'start':
-                    squares.push(<div
-                        className="grid-square"
-                        id={key}
-                        style={{
-                            backgroundColor: START_COLOR,
-                            top: `${y}px`,
-                            left: `${x}px`,
-                            width: `${BOX_DIM}px`,
-                            height: `${BOX_DIM}px`,
-                            margin: `${MARGIN}px`,
-                        }}>
-                    </div>)
-                    break;
-                case 'end':
-                    squares.push(<div
-                        className="grid-square"
-                        id={key}
-                        style={{
-                            backgroundColor: END_COLOR,
-                            top: `${y}px`,
-                            left: `${x}px`,
-                            width: `${BOX_DIM}px`,
-                            height: `${BOX_DIM}px`,
-                            margin: `${MARGIN}px`,
-                        }}>
-                    </div>)
-                    break;
-                default:
-                    break;
-            }
-
+    renderTheGrid(grid) {
+        let y = grid.y * (BOX_DIM + MARGIN)
+        let x = grid.x * (BOX_DIM + MARGIN)
+        let key = (grid.y * NUMBER_OF_BOXES_WIDTH) + grid.x + 1;
+        let color;
+        switch (grid.isA) {
+            case 'free':
+                color = PRIMARY_COLOR;
+                break;
+            case 'wall':
+                color = WALL_COLOR;
+                break;
+            case 'start':
+                color = START_COLOR;
+                break;
+            case 'end':
+                color = END_COLOR;
+                break;
+            default:
+                color = PRIMARY_COLOR;
+                break;
         }
-        return squares;
+        return <div
+                    className="grid-square"
+                    id={key}
+                    style={{
+                        backgroundColor: color,
+                        top: `${y}px`,
+                        left: `${x}px`,
+                        width: `${BOX_DIM}px`,
+                        height: `${BOX_DIM}px`,
+                        margin: `${MARGIN}px`,
+                    }}>
+                </div>
     }
 
     render() {
+        const {grid} = this.state;
         return (
             <div>
                 <h1> Visualize Path Finding Algorithms at Work</h1>
-                <button onClick={() =>this.resetGrid()}>Generate New Grid</button>
+                <button onClick={() => this.resetGrid()}>Generate New Grid</button>
                 <label>Select Path Finding Algorithm: </label>
                 <select className="m-2" id="algorithm">
                     {this.createSelection()}
                 </select>
                 <button onClick={() => this.animatePath()}>Find Path</button>
                 <div className="array-container">
-                    {this.renderTheGrid()}
+                    {grid.map(g => this.renderTheGrid(g))}
                 </div>
             </div>
         );

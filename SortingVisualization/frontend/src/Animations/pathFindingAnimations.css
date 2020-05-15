@@ -22,7 +22,6 @@ button {
 }
 
 select {
-    background-color: white;
     color: #428bca;
     padding: 4px 20px;
     border-radius: 8px;
@@ -30,7 +29,6 @@ select {
 }
 
 option, label {
-    background-color: white;
     color: #428bca;
     margin-left: 10px;
 }
@@ -43,7 +41,7 @@ button:hover {
 }
 
 body {
-    background: #fafafa;
+    background: white;
     color: #333333;
     margin-top: 10px;
 }
