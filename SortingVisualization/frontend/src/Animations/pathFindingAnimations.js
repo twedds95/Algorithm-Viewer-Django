@@ -35,7 +35,6 @@ export default class PathFindingVisualizer extends React.Component {
 
     resetGrid() {
         const grid = [];
-        //TODO: Reset not working for some reason, need to refresh every time
 
         // let points = generateTwoUniquePoints();
         // let start = {isA: 'start', x: points.startX, y: points.startY};
@@ -55,7 +54,11 @@ export default class PathFindingVisualizer extends React.Component {
         }
         grid.push(start);
         grid.push(end);
-        this.setState({grid: grid});
+        this.setState({grid});
+    }
+
+    resetPath(){
+        window.location.reload(true);
     }
 
     animatePath() {
@@ -126,25 +129,27 @@ export default class PathFindingVisualizer extends React.Component {
                 break;
         }
         return <div
-                    className="grid-square"
-                    id={key}
-                    style={{
-                        backgroundColor: color,
-                        top: `${y}px`,
-                        left: `${x}px`,
-                        width: `${BOX_DIM}px`,
-                        height: `${BOX_DIM}px`,
-                        margin: `${MARGIN}px`,
-                    }}>
-                </div>
+            className="grid-square"
+            id={key}
+            style={{
+                backgroundColor: color,
+                top: `${y}px`,
+                left: `${x}px`,
+                width: `${BOX_DIM}px`,
+                height: `${BOX_DIM}px`,
+                margin: `${MARGIN}px`,
+            }}>
+        </div>
     }
 
     render() {
+        console.log('render:', this.state);
         const {grid} = this.state;
+        console.log('render grid:', grid)
         return (
             <div>
                 <h1> Visualize Path Finding Algorithms at Work</h1>
-                <button onClick={() => this.resetGrid()}>Generate New Grid</button>
+                <button onClick={() => this.resetPath()}>Generate New Grid</button>
                 <label>Select Path Finding Algorithm: </label>
                 <select className="m-2" id="algorithm">
                     {this.createSelection()}
