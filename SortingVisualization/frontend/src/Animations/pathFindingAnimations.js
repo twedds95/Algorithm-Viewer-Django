@@ -143,9 +143,7 @@ export default class PathFindingVisualizer extends React.Component {
     }
 
     render() {
-        console.log('render:', this.state);
         const {grid} = this.state;
-        console.log('render grid:', grid)
         return (
             <div>
                 <h1> Visualize Path Finding Algorithms at Work</h1>
@@ -163,19 +161,19 @@ export default class PathFindingVisualizer extends React.Component {
     }
 }
 
-function generateTwoUniquePoints() {
-    let min = 0;
-    let xS = [];
-    let yS = [];
-    let points;
-    for (let i = 0; i < 2; i++) {
-        xS.push(Math.floor(Math.random() * (NUMBER_OF_BOXES_WIDTH - min) + min));
-        yS.push(Math.floor(Math.random() * (NUMBER_OF_BOXES_HEIGHT - min) + min));
-    }
-    if (xS[0] === xS[1] && yS[0] === yS[1]) {
-        points = generateTwoUniquePoints();
-    } else {
-        points = {startX: xS[0], startY: yS[0], endX: xS[1], endY: yS[1]};
-    }
-    return points;
-}
+// function generateTwoUniquePoints() {
+//     let min = 0;
+//     let xS = [];
+//     let yS = [];
+//     let points;
+//     for (let i = 0; i < 2; i++) {
+//         xS.push(Math.floor(Math.random() * (NUMBER_OF_BOXES_WIDTH - min) + min));
+//         yS.push(Math.floor(Math.random() * (NUMBER_OF_BOXES_HEIGHT - min) + min));
+//     }
+//     if (xS[0] === xS[1] && yS[0] === yS[1]) {
+//         points = generateTwoUniquePoints();
+//     } else {
+//         points = {startX: xS[0], startY: yS[0], endX: xS[1], endY: yS[1]};
+//     }
+//     return points;
+// }

@@ -125,11 +125,11 @@ function arrayRemove(arr, value) {
 function weight(current, neighbour, end) {
     let w;
     if (end.x === neighbour.x || end.y === neighbour.y) {
-        w = 0.9;
+        w = 1;
     } else if (current.x === neighbour.x || current.y === neighbour.y) {
         w = 1;
     } else {
-        w = 1;
+        w = 1.2;
     }
     return w;
 }
