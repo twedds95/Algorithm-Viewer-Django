@@ -2,10 +2,9 @@ import React from "react";
 import DrawArea from "./drawingArea";
 import dft from "./fourierTransform";
 
-let time = 0;
 const HEIGHT = 500;
 const WIDTH = window.innerWidth;
-const SPEED = 500;
+const SPEED = 50;
 const Y_OFFSET = HEIGHT * 3 / 10;
 const X_OFFSET = WIDTH * 3 / 20;
 
@@ -66,53 +65,45 @@ export default class FourierDrawings extends React.Component {
     startFourier() {
         let drawing = this.getDrawing();
         let path = [];
+        let frame = 0;
         for (let i = 0; i < drawing.length; i++) {
-            time = 0;
-            let newLine = true;
-            while (time <= 2 * Math.PI) {
+            let time = 0;
+            const dt = Math.PI * 2 / drawing[i].FY.length;
+            path[i] = [];
+            while (time < 2 * Math.PI - dt) {
                 let svgRender = []
-                let epiCyclesX = this.epiCycles(X_OFFSET, 50, 0, drawing[i].FX);
-                let epiCyclesY = this.epiCycles(40, Y_OFFSET, Math.PI / 2, drawing[i].FY);
+                let epiCyclesX = this.epiCycles(X_OFFSET, 50, 0, drawing[i].FX, time);
+                let epiCyclesY = this.epiCycles(40, Y_OFFSET, Math.PI / 2, drawing[i].FY, time);
                 let point = {x: epiCyclesX.x, y: epiCyclesY.y};
-                path.unshift(point);
-                const dt = Math.PI * 2 / drawing[i].FY.length;
+                path[i].push(point);
                 time += dt;
                 svgRender.push(epiCyclesX.cycles);
                 svgRender.push(epiCyclesY.cycles);
-                if (time <= 2 * Math.PI) {
+                if (time < 2 * Math.PI - dt) {
                     svgRender.push(<line x1={epiCyclesX.x} y1={epiCyclesX.y} x2={point.x} y2={point.y}
                                          stroke="black" strokeWidth="1"/>);
                     svgRender.push(<line x1={epiCyclesY.x} y1={epiCyclesY.y} x2={point.x} y2={point.y}
                                          stroke="black" strokeWidth="1"/>);
                 }
-
-                let line = "M " + path[0].x + " " + path[0].y;
-                for (let k = 1; k < path.length - 1; k++) {
-                    if (
-                        Math.sqrt(
-                            (path[k - 1].x - path[k].x) * (path[k - 1].x - path[k].x)
-                            + (path[k - 1].y - path[k].y) * (path[k - 1].y - path[k].y))
-                        < 50.0
-                        &&
-                        !newLine
-                    ) {
-                        line += " L " + path[k].x + " " + path[k].y;
-                    } else {
-                        line += " M " + path[k].x + " " + path[k].y;
+                for (let j = 0; j < path.length; j++) {
+                    let line = "M " + path[j][0].x + " " + path[j][0].y;
+                    for (let k = 1; k < path[j].length; k++) {
+                        line += " L " + path[j][k].x + " " + path[j][k].y;
                     }
+                    // let color = '#' + Math.floor(Math.random() * 16777215).toString(16);
+                    let color = "black";
+                    svgRender.push(<path d={line} stroke={color} strokeWidth="1" fill="none"/>);
                 }
-                svgRender.push(<path d={line} stroke="black" strokeWidth="1" fill="none"/>);
-                newLine = false;
-
                 setTimeout(() => {
                     this.setState({animations: svgRender});
-                }, time * SPEED);
+                }, frame * SPEED);
+                frame++;
             }
         }
     }
 
 
-    epiCycles(x, y, rotation, fourier) {
+    epiCycles(x, y, rotation, fourier, time) {
         let cycles = [];
         for (let i = 0; i < fourier.length; i++) {
             let prevX = x;
@@ -132,8 +123,6 @@ export default class FourierDrawings extends React.Component {
 
     getDrawing() {
         let drawing = [];
-        let x = [];
-        let y = [];
         // console.log(this.drawRef.current.state)
         if (!this.drawRef.current.state.lines._tail) {
             return [];
@@ -141,6 +130,8 @@ export default class FourierDrawings extends React.Component {
         const lines = this.drawRef.current.state.lines._tail.array;
         // console.log(lines)
         for (let i = 0; i < lines.length; i++) {
+            let x = [];
+            let y = [];
             if (lines[i]._root) {
                 let root = lines[i]._root.array
                 for (let j = 0; j < root.length; j++) {
