@@ -1,0 +1,17 @@
+
+.rocketArea {
+    margin: 5px;
+    width: 90%;
+    stroke-width: 2px;
+    height: 500px;
+    border: 2px solid black;
+    position: center;
+}
+
+label {
+    color: #428bca;
+    padding: 20px 20px;
+    border-radius: 8px;
+    margin: 10px;
+
+}

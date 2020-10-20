@@ -6,6 +6,7 @@ import SortingVisualizer from "./Animations/sortingAnimations";
 import PathFindingVisualizer from "./Animations/pathFindingAnimations";
 import FourierDrawings from "./FourierTransforms/fourierTransformDrawings";
 import {Route} from "react-router-dom";
+import SmartRockets from "./RocketGenerations/SmartRockets";
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
             <Route exact path="/sortingVisualization" component={SortingVisualizer}/>
             <Route exact path="/pathFindingVisualization" component={PathFindingVisualizer}/>
             <Route exact path="/fourierTransformDrawings" component={FourierDrawings}/>
+            <Route exact path="/generationSmartRockets" component={SmartRockets}/>
         </div>
     );
 }
