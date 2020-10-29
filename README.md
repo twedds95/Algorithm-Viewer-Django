@@ -8,8 +8,8 @@ Personal project that started off as just a visualization of sorting algorithms,
     - Merge Sort
     - Quick Sort
     - Selection Sort
-    - Bead Sort (Gravity Sort)
     - Insertion Sort
+    - Bead Sort (Gravity Sort)
 ### Path Finding Visualization with A*
 ### Fourier Transform Visualization 
 Draw anything and have it drawn back to your using Fourier Transorms to define every continuous line.
