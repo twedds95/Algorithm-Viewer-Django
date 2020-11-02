@@ -6,11 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>,
+  <BrowserRouter basename={process.env.PUBLIC_URL}>< App /></BrowserRouter>,
   document.getElementById('root')
 );
 
