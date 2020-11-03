@@ -21,7 +21,7 @@ export default class Home extends React.Component {
 
                 <h3>Path Finding Visualization with A*</h3>
                 <h3>Fourier Transform Visualization</h3>
-                <p>Draw anything and have it drawn back to your using Fourier Transorms to define every continuous line.</p>
+                <p>Draw anything and have it drawn back to you using Fourier Transorms to define every continuous line.</p>
                 <h3>Smart Rockets (Evolutionary Algorithm)</h3>
                 <p>Rockets that evolve from generation to generation as they try to make it to their landing zone without crashing.</p>
             </div>
