@@ -8,9 +8,8 @@ export default class Home extends React.Component {
             <div>
                 <h1>Algorithm Viewer Project</h1>
 
-                <p>React app to visualize different algorithms, and other fun projects
-
-                Personal project that started off as just a visualization of sorting algorithms, but now takes on any other personal project or challenge I code.</p>
+                <p>React app to visualize different algorithms, and other fun projects.</p>
+                <p>This project started off as just a visualization of sorting algorithms, but now takes on any other personal project or challenge I code.</p>
                 <h2>List of Challenges Completed:</h2>
 
                 <h3>Sorting Visualizations</h3>

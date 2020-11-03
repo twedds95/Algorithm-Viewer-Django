@@ -31,24 +31,38 @@
 body {
   background: #fafafa;
   color: #428bca;
-  margin-top: 10px;
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: #428bca;
+  font-size: 1.4em;
+}
+
+h1 {  
+  font-size: 2em;
+}
+
+h2 {  
+  font-size: 1.7em;
 }
 
 p {
   padding-left: 15%;
+  padding-right: 15%;
   width: 70%;
 }
 
-.Link {
-  background-color: white;
-  color: #428bca;
-  padding: 0px 20px;
-  border-radius: 8px;
-  margin: 5px;
+.navbar, a, .navbar-nav, .navbar-light .nav-link {
+  color: white;   
+  background-color:  #428bca;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-left : 2%;
+  padding-right: 2%;
+}
+.navbar-brand {
+  font-size: 1.4em;
+  color: white;
 }
 
 

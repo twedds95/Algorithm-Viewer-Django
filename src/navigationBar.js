@@ -1,17 +1,25 @@
 import React from "react";
-import {Link} from 'react-router-dom';
 import './App.css';
+import { Nav, Navbar } from 'react-bootstrap/';
 
 export default class NavBar extends React.Component {
     render() {
         return (
             <div>
-                <Link to='/' className="Link">Home</Link>
-                <Link to='/sortingVisualization' className="Link">Sorting Algorithms Visualization</Link>
-                <Link to='/pathFindingVisualization' className="Link">Path Finding Visualization</Link>
-                <Link to='/fourierTransformDrawings' className="Link">Fourier Transform Drawings</Link>
-                <Link to='/generationSmartRockets' className="Link">Smart Rockets</Link>
+                <Navbar expand="lg" fluid={true}>
+                    <Navbar.Collapse>
+                        <Nav>
+                            <Nav.Link href='/'>Home</Nav.Link>
+                            <Nav.Link href='/sortingVisualization'>Sorting Algorithms Visualization</Nav.Link>
+                            <Nav.Link href='/pathFindingVisualization'>Path Finding Visualization</Nav.Link>
+                            <Nav.Link href='/fourierTransformDrawings'>Fourier Transform Drawings</Nav.Link>
+                            <Nav.Link href='/generationSmartRockets'>Smart Rockets</Nav.Link>
+
+                        </Nav>
+                    </Navbar.Collapse>
+                </Navbar >
             </div>
         );
     }
 }
+
