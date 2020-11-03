@@ -16,6 +16,8 @@ Draw anything and have it drawn back to your using Fourier Transorms to define e
 ### Smart Rockets (Evolutionary Algorithm)
 Rockets that evolve from generation to generation as they try to make it to their landing zone without crashing.
 
+-------------------------------------------
+Hacky react & github pages redirect scripts from https://github.com/rafgraph/spa-github-pages
 
 -------------------------------------------
 ## React Info
