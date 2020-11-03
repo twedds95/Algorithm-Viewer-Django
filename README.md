@@ -12,7 +12,7 @@ Personal project that started off as just a visualization of sorting algorithms,
     - Bead Sort (Gravity Sort)
 ### Path Finding Visualization with A*
 ### Fourier Transform Visualization 
-Draw anything and have it drawn back to your using Fourier Transorms to define every continuous line.
+Draw anything and have it drawn back to you using Fourier Transorms to define every continuous line.
 ### Smart Rockets (Evolutionary Algorithm)
 Rockets that evolve from generation to generation as they try to make it to their landing zone without crashing.
 
