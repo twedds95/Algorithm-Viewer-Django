@@ -12,8 +12,8 @@ const FAILURE_COLOR = 'rgb(255,0,0)';
 
 const SPEED = 5;
 const PROB_OF_WALL = 0.25;
-const NUMBER_OF_BOXES_WIDTH = 120;
-const NUMBER_OF_BOXES_HEIGHT = 60;
+const NUMBER_OF_BOXES_WIDTH = Math.floor(window.innerWidth * 0.1);
+const NUMBER_OF_BOXES_HEIGHT = Math.floor(window.innerHeight * 0.09);
 const BOX_DIM = 6;
 const MARGIN = 2;
 
@@ -35,7 +35,6 @@ export default class PathFindingVisualizer extends React.Component {
 
     resetGrid() {
         const grid = [];
-
         // let points = generateTwoUniquePoints();
         // let start = {isA: 'start', x: points.startX, y: points.startY};
         // let end = {isA: 'end', x: points.endX, y: points.endY};

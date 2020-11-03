@@ -41,13 +41,13 @@ export default class FourierDrawings extends React.Component {
                 <button onClick={() => this.startFourier()}>Start Fourier</button>
                 <div>
                     <div>
-                        {/*<h3>Draw Area</h3>*/}
-                        {/*<h3>Fourier Area</h3>*/}
+                        <span>Draw Area</span>
+                        <span>Fourier Area</span>
                     </div>
                     <DrawArea ref={this.drawRef}/>
                     <div>
                         <svg id="fourierArea" className="fourierArea">
-                            <rect x={X_OFFSET} y={Y_OFFSET} width={WIDTH * 0.35} height="300" stroke="black"
+                            <rect x={X_OFFSET} y={Y_OFFSET} width={WIDTH * 0.33} height="300" stroke="black"
                                   strokeWidth="1" fill="none"/>
                             {this.renderFourier()}
                         </svg>

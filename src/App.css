@@ -38,13 +38,19 @@ h1, h2, h3, h4, h5, h6 {
   color: #428bca;
 }
 
+p {
+  padding-left: 15%;
+  width: 70%;
+}
+
 .Link {
   background-color: white;
   color: #428bca;
-  padding: 4px 20px;
+  padding: 0px 20px;
   border-radius: 8px;
   margin: 5px;
 }
+
 
 
 @keyframes App-logo-spin {

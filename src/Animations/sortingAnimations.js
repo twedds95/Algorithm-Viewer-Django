@@ -2,15 +2,15 @@ import {getMergeSortAnimations} from '../SortingAlgorithms/mergeSort.js';
 import {getQuickSortAnimations} from "../SortingAlgorithms/quickSort";
 import {getBeadSortAnimations} from "../SortingAlgorithms/beadSort";
 import {getInsertionSortAnimations} from "../SortingAlgorithms/insertionSort";
+import {getselectionSortAnimations} from "../SortingAlgorithms/selectionSort";
 import React from "react";
 import './sortingAnimations.css';
-import {getselectionSortAnimations} from "../SortingAlgorithms/selectionSort";
 
 const PRIMARY_COLOR = '#428bca';
 const SECONDARY_COLOR = '#150855';
 const SPEED = 0.7;
-const NUMBER_OF_ARRAY_BARS = 350;
-const MAX_HEIGHT = 500;
+const NUMBER_OF_ARRAY_BARS = Math.floor(window.innerWidth * 0.25);
+const MAX_HEIGHT = Math.floor(window.innerHeight * 0.7);
 
 const SORTING_ALGORITHMS = ["Merge Sort", "Quick Sort", "Selection Sort", "Insertion Sort", "Bead (Gravity) Sort"];
 
