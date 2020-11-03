@@ -1,5 +1,6 @@
 import React from "react";
 import './App.css';
+import {Link} from 'react-router-dom';
 import { Nav, Navbar } from 'react-bootstrap/';
 
 export default class NavBar extends React.Component {
@@ -9,11 +10,11 @@ export default class NavBar extends React.Component {
                 <Navbar expand="lg" fluid={true}>
                     <Navbar.Collapse>
                         <Nav>
-                            <Nav.Link href='/'>Home</Nav.Link>
-                            <Nav.Link href='/sortingVisualization'>Sorting Algorithms Visualization</Nav.Link>
-                            <Nav.Link href='/pathFindingVisualization'>Path Finding Visualization</Nav.Link>
-                            <Nav.Link href='/fourierTransformDrawings'>Fourier Transform Drawings</Nav.Link>
-                            <Nav.Link href='/generationSmartRockets'>Smart Rockets</Nav.Link>
+                            <Link to='/'>Home</Link>
+                            <Link to='/sortingVisualization'>Sorting Algorithms Visualization</Link>
+                            <Link to='/pathFindingVisualization'>Path Finding Visualization</Link>
+                            <Link to='/fourierTransformDrawings'>Fourier Transform Drawings</Link>
+                            <Link to='/generationSmartRockets'>Smart Rockets</Link>
 
                         </Nav>
                     </Navbar.Collapse>
